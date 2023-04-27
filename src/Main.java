@@ -12,7 +12,7 @@ public class Main {
 
             // insert some data into the table
             sql = "INSERT INTO Hamada (id, name) VALUES (4, 'John'), (5, 'Jane')";
-            stmt.executeUpdate(sql);
+//            stmt.executeUpdate(sql);
 
             // retrieve data from the table
             sql = "SELECT * FROM Hamada";
