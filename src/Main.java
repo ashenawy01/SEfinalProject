@@ -7,15 +7,15 @@ public class Main {
              Statement stmt = conn.createStatement()) {
 
             // create a new table
-            String sql = "CREATE TABLE mytable (id INT PRIMARY KEY, name VARCHAR(255))";
-            stmt.executeUpdate(sql);
+            String sql = "CREATE TABLE Hamada (id INT PRIMARY KEY, name VARCHAR(255))";
+//            stmt.executeUpdate(sql);
 
             // insert some data into the table
-            sql = "INSERT INTO mytable (id, name) VALUES (1, 'John'), (2, 'Jane')";
+            sql = "INSERT INTO Hamada (id, name) VALUES (1, 'John'), (2, 'Jane')";
             stmt.executeUpdate(sql);
 
             // retrieve data from the table
-            sql = "SELECT * FROM mytable";
+            sql = "SELECT * FROM Hamada";
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 int id = rs.getInt("id");
