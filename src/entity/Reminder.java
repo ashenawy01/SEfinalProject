@@ -1,17 +1,17 @@
 package entity;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class Reminder {
     private int remID;
     private int appointmentID;
     private String title;
-    private LocalDateTime time;
+    private Timestamp time;
 
-    public Reminder(int appointmentID, String title, LocalDateTime time) {
+    public Reminder(int appointmentID, String title) {
         this.appointmentID = appointmentID;
         this.title = title;
-        this.time = time;
     }
 
     public int getRemID() {
@@ -38,11 +38,11 @@ public class Reminder {
         this.title = title;
     }
 
-    public LocalDateTime getTime() {
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 }

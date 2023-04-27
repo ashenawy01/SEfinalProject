@@ -1,17 +1,18 @@
 package entity;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class Appointment {
     private int appID;
     private int caseID;
-    private LocalDateTime date;
+    private Timestamp date;
     private String Title;
     private String description;
 
-    public Appointment(int caseID, LocalDateTime date, String title, String description) {
+    public Appointment(int caseID, String title, String description) {
         this.caseID = caseID;
-        this.date = date;
         Title = title;
         this.description = description;
     }
@@ -32,11 +33,11 @@ public class Appointment {
         this.caseID = caseID;
     }
 
-    public LocalDateTime getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 

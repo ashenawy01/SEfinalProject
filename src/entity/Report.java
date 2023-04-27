@@ -1,16 +1,16 @@
 package entity;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class Report {
     private int repID;
     private String name;
-    private LocalDateTime date;
+    private Timestamp date;
     private String content;
 
-    public Report(String name, LocalDateTime date, String content) {
+    public Report(String name, String content) {
         this.name = name;
-        this.date = date;
         this.content = content;
     }
 
@@ -30,11 +30,11 @@ public class Report {
         this.name = name;
     }
 
-    public LocalDateTime getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
