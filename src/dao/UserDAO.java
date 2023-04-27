@@ -13,29 +13,36 @@ public class UserDAO {
 
     private final String url = "jdbc:derby:Database/LAWFIRMDB;";
 
+    // create new user
     public boolean save(User user) {
+        // Insert data sql statement
+        String sql = "INSERT INTO SYS_USER (firstname, lastname, email, pass, isactive)" +
+                " VALUES (?, ?, ?, ?, ?)";
+        // connect to database
         try (Connection conn = DriverManager.getConnection(url);
-             Statement stmt = conn.createStatement()) {
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            // insert some data into the table
-            String sql = "INSERT INTO SYS_USER (firstname, lastname, email, pass, isactive)" +
-                    " VALUES (?, ?, ?, ?, ?)";
-
-            PreparedStatement pstmt = conn.prepareStatement(sql);
+            // set user values
             pstmt.setString(1, user.getFirstName());
             pstmt.setString(2, user.getLastName());
             pstmt.setString(3, user.getEmail());
             pstmt.setString(4, user.getPassword());
             pstmt.setBoolean(5, user.isActive());
+            // the number of inserted rows - (i) if true & (0) if false
             return pstmt.executeUpdate() > 0;
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return false;
+        return false; // default return is false (if any exception thrown)
     }
 
+
+    /*
+    * Find the user by ID
+    * This is a Generic function
+    * to find the user with type (Admin & Lawyer & LawyerAssist)
+    * according to the given object parameter
+    * */
     public <T>User findUserById (T object, int id) {
 
         // Get the type of user to find
@@ -48,12 +55,17 @@ public class UserDAO {
             user = new LawyerAssistant();
         }
 
+        // the executed query
+        String sql = "SELECT * FROM SYS_USER WHERE ID = " + id;
+
+        // connect to database
         try (Connection connection = DriverManager.getConnection(url);
              Statement statement = connection.createStatement()) {
 
-           String sql = "SELECT * FROM SYS_USER WHERE ID = " + id;
+            // get the result
            ResultSet resultSet = statement.executeQuery(sql);
 
+           // set user attributes
             if (resultSet.next()) {
                user.setId(resultSet.getInt("ID"));
                user.setFirstName(resultSet.getString("FIRSTNAME"));
@@ -66,29 +78,42 @@ public class UserDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return null; // If exception thrown
         }
-        return user;
+        return user; // return user
     }
+
+
+
+    // Delete User by ID
     public boolean deleteUserById(int id) {
+        // The executed sql statement
+        String sql = "DELETE FROM SYS_USER WHERE ID = " + id;
+
+        // connect to database
         try (Connection connection = DriverManager.getConnection(url);
              Statement statement = connection.createStatement()) {
-
-            String sql = "DELETE FROM SYS_USER WHERE ID = " + id;
+            // the affected number of rows (1 if true & 0 if false)
             return statement.executeUpdate(sql) > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return false; // default return (if exception thrown)
     }
+
+    // Update User by ID Param: (ID of user, the new object of user)
     public boolean updateUserById(int id, User newUser) {
 
+        // The executed sql statement
         String sql = "UPDATE SYS_USER " +
                 "SET FIRSTNAME = ?, LASTNAME = ?, EMAIL = ?, PASS = ?, ISACTIVE = ?, CREATEDAT = ? " +
                 "WHERE ID = ?";
 
+        // connect to database
         try (Connection connection = DriverManager.getConnection(url);
              PreparedStatement pstmt = connection.prepareStatement(sql)) {
 
+            // insert the values in the executed sql statement
             pstmt.setString(1, newUser.getFirstName());
             pstmt.setString(2, newUser.getLastName());
             pstmt.setString(3, newUser.getEmail());
@@ -97,16 +122,27 @@ public class UserDAO {
             pstmt.setTimestamp(6, newUser.getCreatedAt());
             pstmt.setInt(7, id);
 
+            // the affected number of rows (1 if true & 0 if false)
             return pstmt.executeUpdate() > 0;
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return false;  // default return (if exception thrown)
     }
 
+
+
+    /*
+     * Retrieve all Users
+     * This is a Generic function
+     * to retrieve all users with type (Admin & Lawyer & LawyerAssist)
+     * according to the given (object) parameter
+     * */
     public <T> List<User> findAll(T object) {
+        // List to store all the retrieved objects (User)
         List<User> users = new ArrayList<>();
+        // The executed query
         String sql = "select * from SYS_USER";
 
         // Get the type of user to find
@@ -119,11 +155,14 @@ public class UserDAO {
             user = new LawyerAssistant();
         }
 
+        // Connect to database
         try (Connection connection = DriverManager.getConnection(url);
             Statement statement = connection.createStatement()) {
 
+            // Get the result (rows)
             ResultSet resultSet = statement.executeQuery(sql);
-            while (resultSet.next()) {
+            // Set user attributes for each user
+            while (resultSet.next()) { // for each row
                 user.setId(resultSet.getInt("ID"));
                 user.setFirstName(resultSet.getString("FIRSTNAME"));
                 user.setLastName(resultSet.getString("LASTNAME"));
@@ -131,11 +170,12 @@ public class UserDAO {
                 user.setPassword(resultSet.getString("PASS"));
                 user.setActive(resultSet.getBoolean("ISACTIVE"));
                 user.setCreatedAt(resultSet.getTimestamp("CREATEDAT"));
-                users.add(user);
+                users.add(user); // add the retrieved user
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return null; // if exception thrown
         }
         return users;
     }
