@@ -11,7 +11,7 @@ public class Main {
 //            stmt.executeUpdate(sql);
 
             // insert some data into the table
-            sql = "INSERT INTO Hamada (id, name) VALUES (1, 'John'), (2, 'Jane')";
+            sql = "INSERT INTO Hamada (id, name) VALUES (4, 'John'), (5, 'Jane')";
             stmt.executeUpdate(sql);
 
             // retrieve data from the table
