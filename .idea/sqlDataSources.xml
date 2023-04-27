@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="056cb32e-5976-4f12-a732-436dbcc09c03" name="LAWFIRMDB Mapping">
+      <data-sources db="454be79d-a04d-4159-8132-87a221b636a7" ddl="85c15783-09b6-4069-8de9-14288bcc6663" />
+      <scope>
+        <node kind="schema" qname="APP" />
+      </scope>
+    </mapping>
+  </component>
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="85c15783-09b6-4069-8de9-14288bcc6663" />
+          <option name="name" value="LAWFIRMDB (DDL)" />
+          <option name="dbmsName" value="DERBY" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/Database" />
+            </array>
+          </option>
+          <option name="outLayout" value="File per object by schema.groovy" />
+        </State>
+      </list>
+    </option>
+  </component>
+</project>
