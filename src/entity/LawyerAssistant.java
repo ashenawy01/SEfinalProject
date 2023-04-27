@@ -1,5 +1,6 @@
 package entity;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -8,8 +9,8 @@ public class LawyerAssistant extends User {
     private List<Report> reports;
     private List<Appointment> appointments;
 
-    public LawyerAssistant(String firstName, String lastName, String email, String phoneNo, String password, LocalDateTime createdAt, boolean isActive, boolean isSuperVisor) {
-        super(firstName, lastName, email, phoneNo, password, createdAt, isActive);
+    public LawyerAssistant(String firstName, String lastName, String email, String phoneNo, String password, Timestamp createdAt, boolean isActive, boolean isSuperVisor) {
+        super(firstName, lastName, email, password, phoneNo, isActive);
         this.isSuperVisor = isSuperVisor;
     }
 

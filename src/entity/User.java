@@ -1,28 +1,29 @@
 package entity;
 
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.Objects;
 
-public class User implements Comparable<User>, Comparator<User> {
+public abstract class User implements Comparable<User>, Comparator<User> {
     private int id;
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNo;
     private String password;
-    private LocalDateTime createdAt;
+    private Timestamp createdAt;
     private boolean isActive;
 
 
-    public User(String firstName, String lastName, String email, String phoneNo, String password, LocalDateTime createdAt, boolean isActive) {
+    public User(String firstName, String lastName, String email, String password, String phoneNo, boolean isActive) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNo = phoneNo;
         this.password = password;
-        this.createdAt = createdAt;
+        this.createdAt = new Timestamp(System.currentTimeMillis());
         this.isActive = isActive;
     }
     public User(){}
@@ -75,11 +76,11 @@ public class User implements Comparable<User>, Comparator<User> {
         this.password = password;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 

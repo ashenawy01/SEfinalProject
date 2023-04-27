@@ -8,8 +8,8 @@ public class Lawyer extends User{
     private boolean isSenior;
     private boolean isAvialable;
 
-    public Lawyer(String firstName, String lastName, String email, String phoneNo, String password, LocalDateTime createdAt, boolean isActive, int experienceYear, LawType type, boolean isSenior) {
-        super(firstName, lastName, email, phoneNo, password, createdAt, isActive);
+    public Lawyer(String firstName, String lastName, String email, String phoneNo, String password, boolean isActive, int experienceYear, LawType type, boolean isSenior) {
+        super(firstName, lastName, email, phoneNo, password, isActive);
         this.experienceYear = experienceYear;
         this.type = type;
         this.isSenior = isSenior;
