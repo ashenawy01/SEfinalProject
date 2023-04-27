@@ -9,7 +9,7 @@ public class Client implements Comparable<Client>, Comparator<Client> {
     private String lastName;
     private String phoneNo;
 
-    public Client(String firstName, String lastName, String email, String phoneNo) {
+    public Client(String firstName, String lastName, String phoneNo) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNo = phoneNo;
