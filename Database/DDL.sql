@@ -155,3 +155,6 @@ CREATE TABLE Reminder(
                          constraint R_appoint_pk primary key (id),
                          CONSTRAINT R_appoint_fk FOREIGN KEY (appID) references Appointment(id)
 );
+
+
+
