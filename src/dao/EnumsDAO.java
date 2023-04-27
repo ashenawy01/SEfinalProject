@@ -19,70 +19,72 @@ public class EnumsDAO {
 
 
 //         Insert data sql statement
-//        String sql = "INSERT INTO CASECATEGORY (CASETYPE)" +
-//                " VALUES (?)";
-//
-//        // Connect to Database
-//        try (Connection conn = DriverManager.getConnection(url);
-//             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-//
-//            int i = 1;
-//            for (CaseCategory c: CaseCategory.values()) {
-//                // Add the variable
-//                pstmt.setString(1, c.toString());
-//                System.out.println("CaseCategory added? " + (pstmt.executeUpdate() > 0));
-//
-//            }
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
+        String sql = "";
+
+        sql = "INSERT INTO CASECATEGORY (CASETYPE)" +
+                " VALUES (?)";
+
+        // Connect to Database
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            int i = 1;
+            for (CaseCategory c: CaseCategory.values()) {
+                // Add the variable
+                pstmt.setString(1, c.toString());
+                System.out.println("CaseCategory added? " + (pstmt.executeUpdate() > 0));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
 
 
-//        String sql = "INSERT INTO CASESTATE (CASETYPE)" +
-//                "VALUES (?)";
-//
-//        try (Connection conn = DriverManager.getConnection(url);
-//             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-//
-//
-//            for (CaseState c: CaseState.values()) {
-//                // Add the variable
-//                pstmt.setString(1, c.toString());
-//                System.out.println("CaseSate added? " + (pstmt.executeUpdate() > 0));
-//
-//            }
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+
+         sql = "INSERT INTO CASESTATE (CASETYPE)" +
+                "VALUES (?)";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+
+            for (CaseState c: CaseState.values()) {
+                // Add the variable
+                pstmt.setString(1, c.toString());
+                System.out.println("CaseSate added? " + (pstmt.executeUpdate() > 0));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
 
 
-//        String sql = "INSERT INTO COMPLEXITY (CLEVEL)" +
-//                "VALUES (?)";
-//
-//        try (Connection conn = DriverManager.getConnection(url);
-//             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-//
-//
-//            for (Complexity c: Complexity.values()) {
-//                // Add the variable
-//                pstmt.setString(1, c.toString());
-//                System.out.println("Complexity added? " + (pstmt.executeUpdate() > 0));
-//
-//            }
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+         sql = "INSERT INTO COMPLEXITY (CLEVEL)" +
+                "VALUES (?)";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
 
-        String sql = "INSERT INTO LAWTYPE (LAWYERTYPE)" +
+            for (Complexity c: Complexity.values()) {
+                // Add the variable
+                pstmt.setString(1, c.toString());
+                System.out.println("Complexity added? " + (pstmt.executeUpdate() > 0));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+         sql = "INSERT INTO LAWTYPE (LAWYERTYPE)" +
                 "VALUES (?)";
 
         try (Connection conn = DriverManager.getConnection(url);
