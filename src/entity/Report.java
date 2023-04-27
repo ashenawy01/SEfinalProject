@@ -9,8 +9,9 @@ public class Report {
     private Timestamp date;
     private String content;
 
-    public Report(String name, String content) {
+    public Report(String name, Timestamp date, String content) {
         this.name = name;
+        this.date = date;
         this.content = content;
     }
 

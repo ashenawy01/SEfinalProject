@@ -15,6 +15,7 @@ public class Document {
         this.name = name;
         this.caseID = caseID;
         this.uploadBy = uploadBy;
+        this.uploadTime = new Timestamp(System.currentTimeMillis());
     }
 
     public int getDocID() {

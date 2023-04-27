@@ -1,9 +1,11 @@
 package entity;
 
 import java.sql.Timestamp;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
-public class Case {
+public class Case implements Comparable<Case>, Comparator<Case> {
     private int caseID;
     private String name;
     private String description;
@@ -97,9 +99,25 @@ public class Case {
         this.clientID = clientID;
     }
 
-//    public  boolean addLawyer(Lawyer){}
-//    public boolean deleteLawyerByID(int){}
-//    public addDocument(Document){}
-//    public deleteDocumentByID(int){}
+    @Override
+    public int compareTo(Case caseObj) {
+        return Integer.compare(this.caseID, caseObj.getCaseID());
+    }
 
+    @Override
+    public int compare(Case o1, Case o2) {
+        return Integer.compare(o1.getCaseID(), o2.getCaseID());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Case aCase)) return false;
+        return caseID == aCase.caseID && clientID == aCase.clientID && Objects.equals(name, aCase.name) && Objects.equals(description, aCase.description) && Objects.equals(documents, aCase.documents) && Objects.equals(lawyers, aCase.lawyers) && Objects.equals(createdAt, aCase.createdAt) && caseCategory == aCase.caseCategory && caseState == aCase.caseState;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(caseID);
+    }
 }

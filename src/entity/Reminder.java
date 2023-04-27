@@ -9,9 +9,10 @@ public class Reminder {
     private String title;
     private Timestamp time;
 
-    public Reminder(int appointmentID, String title) {
+    public Reminder(int appointmentID, String title, Timestamp time) {
         this.appointmentID = appointmentID;
         this.title = title;
+        this.time = time;
     }
 
     public int getRemID() {

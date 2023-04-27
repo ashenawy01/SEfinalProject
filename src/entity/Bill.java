@@ -4,20 +4,20 @@ public class Bill {
     private int billID;
     private int caseID;
     private int takenDays;
-    private double CourtFee;
+    private double courtFee;
     private double travelFee;
     private Complexity complexity;
     private double expertFee;
-    private double AdminCost;
+    private double adminCost;
 
     public Bill(int caseID, int takenDays, double courtFee, double travelFee, Complexity complexity, double expertFee, double adminCost) {
         this.caseID = caseID;
         this.takenDays = takenDays;
-        CourtFee = courtFee;
+        this.courtFee = courtFee;
         this.travelFee = travelFee;
         this.complexity = complexity;
         this.expertFee = expertFee;
-        AdminCost = adminCost;
+        this.adminCost = adminCost;
     }
 
     public int getBillID() {
@@ -45,11 +45,11 @@ public class Bill {
     }
 
     public double getCourtFee() {
-        return CourtFee;
+        return courtFee;
     }
 
     public void setCourtFee(double courtFee) {
-        CourtFee = courtFee;
+        this.courtFee = courtFee;
     }
 
     public double getTravelFee() {
@@ -77,13 +77,12 @@ public class Bill {
     }
 
     public double getAdminCost() {
-        return AdminCost;
+        return adminCost;
     }
 
     public void setAdminCost(double adminCost) {
-        AdminCost = adminCost;
+        this.adminCost = adminCost;
     }
 
-//    public double calculateTotalEstimate(){}
-    // public double CostEstimator(int billID,int caseID, int takenDays, double courtFee, double travelFee, Complexity complexity, double expertFee, double adminCost){}
+
 }

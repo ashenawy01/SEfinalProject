@@ -1,16 +1,17 @@
 package entity;
 
-public class Client {
+import java.util.Comparator;
+import java.util.Objects;
+
+public class Client implements Comparable<Client>, Comparator<Client> {
     private int ClientID;
     private String firstName;
     private String lastName;
-    private String email;
     private String phoneNo;
 
     public Client(String firstName, String lastName, String email, String phoneNo) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
         this.phoneNo = phoneNo;
     }
 
@@ -38,19 +39,33 @@ public class Client {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getPhoneNo() {
         return phoneNo;
     }
 
     public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
+    }
+
+    @Override
+    public int compareTo(Client obj) {
+        return Integer.compare(this.getClientID(), obj.getClientID());
+    }
+
+    @Override
+    public int compare(Client o1, Client o2) {
+        return Integer.compare(o1.getClientID(), o2.getClientID());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Client client)) return false;
+        return ClientID == client.ClientID && Objects.equals(firstName, client.firstName) && Objects.equals(lastName, client.lastName) && Objects.equals(phoneNo, client.phoneNo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ClientID);
     }
 }
