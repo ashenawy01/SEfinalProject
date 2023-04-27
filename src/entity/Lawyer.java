@@ -15,6 +15,7 @@ public class Lawyer extends User{
         this.isSenior = isSenior;
     }
 
+    public Lawyer () {}
     public int getExperienceYear() {
         return experienceYear;
     }

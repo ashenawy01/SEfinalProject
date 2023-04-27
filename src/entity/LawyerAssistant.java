@@ -14,6 +14,7 @@ public class LawyerAssistant extends User {
         this.isSuperVisor = isSuperVisor;
     }
 
+    public LawyerAssistant(){}
     public boolean isSuperVisor() {
         return isSuperVisor;
     }

@@ -113,4 +113,18 @@ public abstract class User implements Comparable<User>, Comparator<User> {
     public int hashCode() {
         return Objects.hash(id, email);
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNo='" + phoneNo + '\'' +
+                ", password='" + password + '\'' +
+                ", createdAt=" + createdAt +
+                ", isActive=" + isActive +
+                '}';
+    }
 }

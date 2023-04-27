@@ -1,10 +1,10 @@
 ----------------------------------------------------------------
-Thu Apr 27 15:33:10 UTC 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0187-c358-c6de-000007388f20 
-on database directory D:\ICS\Year 1\Semester 2\SE\SEfinalProject\Database\LAWFIRMDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@42110406 
-Loaded from file:/C:/Users/abdel/AppData/Roaming/JetBrains/IntelliJIdea2022.3/jdbc-drivers/Apache%20Derby/10.15.2.0/derby-10.15.2.0.jar
-java.vendor=JetBrains s.r.o.
-java.runtime.version=17.0.5+1-b653.23
+Thu Apr 27 19:39:59 EET 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-0187-c3cc-e863-00000f42fc68 
+on database directory D:\ICS\Year 1\Semester 2\SE\SEfinalProject\Database\LAWFIRMDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@4d7e1886 
+Loaded from file:/C:/Derby/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=19.0.1+10-21
 user.dir=D:\ICS\Year 1\Semester 2\SE\SEfinalProject
 os.name=Windows 10
 os.arch=amd64

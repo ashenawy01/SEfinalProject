@@ -9,6 +9,7 @@ private boolean isGlobal;
         super(firstName, lastName, email, phoneNo, password, isActive);
         this.isGlobal = isGlobal;
     }
+    public Admin (){};
 
     public boolean isGlobal() {
         return isGlobal;
