@@ -179,7 +179,7 @@ public class ClientDAO {
     }
 
     public boolean updateUserById(int id, Client newClient) {
-        String sql = "UPDATE CLIENTSET FIRSTNAME = ?, LASTNAME = ?, PHONENO = ?WHERE ID = ?";
+        String sql = "UPDATE CLIENT FIRSTNAME = ?, LASTNAME = ?, PHONENO = ?WHERE ID = ?";
 
         try {
             Connection connection = DriverManager.getConnection("jdbc:derby:Database/LAWFIRMDB;");
