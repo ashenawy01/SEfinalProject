@@ -93,24 +93,24 @@ public class newMain {
 //        System.out.println(lawyerAssistDAO.findAll());
 //
 
-
-        // Testing ClientDAO
-        // All functions are tested (all done)
-        Client newClient = new Client("Abdelrhman", "Ali", "151515");
-
-        System.out.println("Client saved ? " + clientDAO.save(newClient));
-        System.out.println("Get find the saved Client ....");
-        System.out.println(clientDAO.findById(201));
-        System.out.println("Update the Last name....");
-        newClient.setLastName("El-Shenawy");
-        System.out.println("Client updated ? " + clientDAO.updateClientById(201, newClient));
-        System.out.println("Get all Clients ....");
-        System.out.println(clientDAO.findAll());
-        System.out.println("Delete the newClient ... ");
-        System.out.println("Case deleted ? " + clientDAO.deleteClientById(201));
-        System.out.println("Get all Clients ....");
-        System.out.println(clientDAO.findAll());
-
+//
+//        // Testing ClientDAO
+//        // All functions are tested (all done)
+//        Client newClient = new Client("Abdelrhman", "Ali", "151515");
+//
+//        System.out.println("Client saved ? " + clientDAO.save(newClient));
+//        System.out.println("Get find the saved Client ....");
+//        System.out.println(clientDAO.findById(201));
+//        System.out.println("Update the Last name....");
+//        newClient.setLastName("El-Shenawy");
+//        System.out.println("Client updated ? " + clientDAO.updateClientById(201, newClient));
+//        System.out.println("Get all Clients ....");
+//        System.out.println(clientDAO.findAll());
+//        System.out.println("Delete the newClient ... ");
+//        System.out.println("Case deleted ? " + clientDAO.deleteClientById(201));
+//        System.out.println("Get all Clients ....");
+//        System.out.println(clientDAO.findAll());
+//
 
 
 //        // Testing CaseDAO
