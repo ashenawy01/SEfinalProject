@@ -96,4 +96,31 @@ public class AdminADO {
         }
         return admins; // return the retrieved list
     }
+
+
+    // Retrieve admin by ID
+    public Admin findAdminById(int id) {
+
+        // The executed query
+        String sql = "select * from ADMIN where ID = " + id;
+        // admin to present each retrieved admin
+        Admin admin = new Admin();
+
+        // Connect to database
+        try (Connection connection = DriverManager.getConnection(url);
+             Statement statement = connection.createStatement()) {
+
+            // Get all rows
+            ResultSet resultSet = statement.executeQuery(sql);
+            if (resultSet.next()) { // for first row (Admin)
+                admin.setId(resultSet.getInt("ID"));
+                admin.setGlobal(resultSet.getBoolean("ISGLOBAL"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return admin; // return the retrieved Admin
+    }
 }
