@@ -30,4 +30,18 @@ public class LawyerAssistant extends User {
     public void setReports(List<Report> reports) {
         this.reports = reports;
     }
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + this.getId() +
+                ", firstName='" + this.getFirstName() + '\'' +
+                ", lastName='" + this.getLastName() + '\'' +
+                ", email='" + this.getEmail() + '\'' +
+                ", phoneNo='" + this.getPhoneNo() + '\'' +
+                ", password='" + this.getPassword() + '\'' +
+                ", createdAt=" + this.getCreatedAt() + '\'' +
+                ", isActive=" + this.isActive()  + '\'' +
+                ", isSuperVisor=" + this.isSuperVisor  + '\'' +
+                '}';
+    }
 }

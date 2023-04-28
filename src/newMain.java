@@ -1,4 +1,5 @@
 import dao.AdminADO;
+import dao.LawyerAssistDAO;
 import dao.LawyerDAO;
 import dao.UserDAO;
 import entity.*;
@@ -10,6 +11,7 @@ public class newMain {
     final static UserDAO userDAO = new UserDAO();
     final static LawyerDAO lawyerDAO = new LawyerDAO();
     final static AdminADO adminDAO = new AdminADO();
+    final static LawyerAssistDAO lawyerAssistDAO = new LawyerAssistDAO();
     public static void main(String[] args) {
 
 
@@ -72,7 +74,26 @@ public class newMain {
 ////        System.out.println("Lawyer deleted ? " + lawyerDAO.deleteLawyerById(1));
 //        System.out.println("Get all Lawyers ....");
 //        System.out.println(lawyerDAO.findAll());
-        
+
+
+//        // Testing LawyerAssistant
+//        // All functions are tested (all done)
+//        LawyerAssistant lawyerAssist = new LawyerAssistant();
+//        lawyerAssist = (LawyerAssistant) userDAO.findUserById(lawyerAssist, 1);
+//        lawyerAssist.setSuperVisor(false);
+//        System.out.println("LawyerAssistant saved ? " + lawyerAssistDAO.save(lawyerAssist));
+//        System.out.println("Get find the saved LawyerAssistant ....");
+//        System.out.println(lawyerAssistDAO.findById(1));
+//        System.out.println("Update the availability status....");
+//        lawyerAssist.setSuperVisor(true);
+//        System.out.println("LawyerAssistant updated ? " + lawyerAssistDAO.updateLawyerAssistById(1, lawyerAssist));
+//        System.out.println("Get all LawyerAssistants ....");
+//        System.out.println(lawyerAssistDAO.findAll());
+//        System.out.println("Delete the lawyerAssist ... ");
+////        System.out.println("LawyerAssistant deleted ? " + lawyerAssistDAO.deleteLawyerAssistById(1));
+//        System.out.println("Get all LawyerAssistants ....");
+//        System.out.println(lawyerAssistDAO.findAll());
+//
 
     }
 }
