@@ -84,6 +84,54 @@ public class UserDAO {
     }
 
 
+    /*
+     * Find the user by email
+     * This is a Generic function
+     * to find the user with type (Admin & Lawyer & LawyerAssist)
+     * according to the given object parameter
+     * Note : Email is set to be  unique in Database already
+     * */
+    public <T>User findUserByEmail (T object, String email) {
+
+        // Get the type of user to find
+        User user = null;
+        if (object instanceof Admin) {
+            user = new Admin();
+        } else if (object instanceof Lawyer) {
+            user = new Lawyer();
+        } else if (object instanceof LawyerAssistant) {
+            user = new LawyerAssistant();
+        }
+
+        // the executed query
+        String sql = "SELECT * FROM SYS_USER WHERE EMAIL = " + email;
+
+        // connect to database
+        try (Connection connection = DriverManager.getConnection(url);
+             Statement statement = connection.createStatement()) {
+
+            // get the result
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            // set user attributes
+            if (resultSet.next()) {
+                user.setId(resultSet.getInt("ID"));
+                user.setFirstName(resultSet.getString("FIRSTNAME"));
+                user.setLastName(resultSet.getString("LASTNAME"));
+                user.setEmail(resultSet.getString("EMAIL"));
+                user.setPassword(resultSet.getString("PASS"));
+                user.setActive(resultSet.getBoolean("ISACTIVE"));
+                user.setCreatedAt(resultSet.getTimestamp("CREATEDAT"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null; // If exception thrown
+        }
+        return user; // return user
+    }
+
+
 
     // Delete User by ID
     public boolean deleteUserById(int id) {
