@@ -13,7 +13,7 @@ public class ClientDAO {
 
     private final String url = "jdbc:derby:Database/LAWFIRMDB;";
 
-    // Save lawyer attributes in table lawyer
+    // Save client attributes in table client
     public boolean save(Client client) {
 
         // Insert data sql statement
@@ -55,7 +55,7 @@ public class ClientDAO {
     }
 
 
-    // Update client by ID Parm(client id , the new object of lawyer)
+    // Update client by ID Parm(client id , the new object of client)
     public boolean updateClientById(int id, Client newClient) {
 
         // The executed query (Note id cannot be updated)
@@ -79,13 +79,13 @@ public class ClientDAO {
     }
 
 
-    // Retrieve all lawyers
+    // Retrieve all clients
     public List<Client> findAll() {
         // List to store all the retrieved objects (clients)
         List<Client> clients = new ArrayList<>();
         // The executed query
-        String sql = "select * from LAWYER";
-        // lawyer to present each retrieved lawyer
+        String sql = "select * from CLIENT";
+        // client to present each retrieved client
         Client client = new Client();
 
         LawType[] lawTypes = LawType.values();
@@ -101,7 +101,7 @@ public class ClientDAO {
                 client.setFirstName(resultSet.getString("FIRSTNAME"));
                 client.setLastName(resultSet.getString("LASTNAME"));
                 client.setPhoneNo(resultSet.getString("PHONENO"));
-                clients.add(client); // Add lawyer to the list
+                clients.add(client); // Add client to the list
             }
             return clients; // return the retrieved list
 
@@ -112,11 +112,11 @@ public class ClientDAO {
     }
 
 
-    // Retrieve lawyer by ID
+    // Retrieve client by ID
     public Client findById(int id) {
         // The executed query
-        String sql = "select * from LAWYER where ID = " + id;
-        // lawyer to present each retrieved lawyer
+        String sql = "select * from CLIENT where ID = " + id;
+        // client to present each retrieved client
         Client client = new Client();
         LawType [] lawTypes = LawType.values();
 
@@ -132,7 +132,7 @@ public class ClientDAO {
                 client.setLastName(resultSet.getString("LASTNAME"));
                 client.setPhoneNo(resultSet.getString("PHONENO"));
             }
-            return client; // return the retrieved lawyer
+            return client; // return the retrieved client
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -69,4 +69,14 @@ public class Client implements Comparable<Client>, Comparator<Client> {
     public int hashCode() {
         return Objects.hash(ClientID);
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "ClientID=" + ClientID +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNo='" + phoneNo + '\'' +
+                '}';
+    }
 }

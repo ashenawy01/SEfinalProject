@@ -1,5 +1,3 @@
-package dao;
-
 import entity.CaseCategory;
 import entity.CaseState;
 import entity.Complexity;
