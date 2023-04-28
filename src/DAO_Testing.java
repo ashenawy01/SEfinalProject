@@ -1,6 +1,6 @@
 import dao.*;
-import entity.*;
-public class newMain {
+
+public class DAO_Testing {
 
 
 
@@ -97,7 +97,6 @@ public class newMain {
 //        // Testing ClientDAO
 //        // All functions are tested (all done)
 //        Client newClient = new Client("Abdelrhman", "Ali", "151515");
-//
 //        System.out.println("Client saved ? " + clientDAO.save(newClient));
 //        System.out.println("Get find the saved Client ....");
 //        System.out.println(clientDAO.findById(201));
@@ -117,7 +116,6 @@ public class newMain {
 //        // All functions are tested (all done)
 //        Case newCase = new Case("BUE case", "Case was issued by a group of BUE students due to the large amount of tasks that they get",
 //                null, null, CaseCategory.Civil_Case, CaseState.Active, 1);
-//
 //        System.out.println("Case saved ? " + caseDAO.save(newCase));
 //        System.out.println("Get find the saved Case ....");
 //        System.out.println(caseDAO.findById(401));
