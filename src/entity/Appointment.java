@@ -16,6 +16,7 @@ public class Appointment {
         this.description = description;
     }
 
+    public Appointment(){}
     public int getAppID() {
         return appID;
     }

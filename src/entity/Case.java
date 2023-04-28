@@ -27,6 +27,8 @@ public class Case implements Comparable<Case>, Comparator<Case> {
         this.clientID = clientID;
     }
 
+    public Case () {}
+
     public int getCaseID() {
         return caseID;
     }
