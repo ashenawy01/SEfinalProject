@@ -18,6 +18,7 @@ public class Document {
         this.uploadTime = new Timestamp(System.currentTimeMillis());
     }
 
+    public Document (){}
     public int getDocID() {
         return docID;
     }
