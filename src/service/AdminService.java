@@ -63,7 +63,7 @@ public class AdminService {
     public List<Admin> findAllAdmins() {
         Map<Integer, User> userMap = new HashMap<>();
         Admin adminObj = new Admin();
-        List<User> users = userDAO.findAll(adminObj);
+        List<User> users = userDAO.findAll();
         for (User user : users) {
             userMap.put(user.getId(), user);
         }

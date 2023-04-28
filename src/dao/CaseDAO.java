@@ -90,7 +90,6 @@ public class CaseDAO {
         // The executed query
         String sql = "select * from LEGAL_CASE";
         // case to present each retrieved case
-        Case newCase = new Case();
 
         CaseCategory[] caseCategories = CaseCategory.values();
         CaseState[] caseStates = CaseState.values();
@@ -101,6 +100,7 @@ public class CaseDAO {
             // Get all rows
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) { // for each row (Case)
+                Case newCase = new Case();
                 newCase.setCaseID(resultSet.getInt("ID"));
                 newCase.setName(resultSet.getString("NAME"));
                 newCase.setDescription(resultSet.getString("DESCRIPTION"));

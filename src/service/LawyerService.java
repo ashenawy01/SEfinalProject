@@ -65,6 +65,9 @@ public class LawyerService {
         userTemp = (Lawyer) userDAO.findUserById(userTemp, id);  // get Lawyer data in User Table
         Lawyer finalLawyer = lawyerDAO.findById(userTemp.getId());  // get Lawyer data in Lawyer Table
         // add the attributes from user table
+        if (finalLawyer == null) {
+            return null;
+        }
         finalLawyer.setFirstName(userTemp.getFirstName());
         finalLawyer.setLastName(userTemp.getLastName());
         finalLawyer.setEmail(userTemp.getEmail());
@@ -75,7 +78,7 @@ public class LawyerService {
     public List<Lawyer> findAllLawyers() {
         Map<Integer, User> userMap = new HashMap<>();
         Lawyer lawyerObj = new Lawyer();
-        List<User> users = userDAO.findAll(lawyerObj);
+        List<User> users = userDAO.findAll();
         for (User user : users) {
             userMap.put(user.getId(), user);
         }

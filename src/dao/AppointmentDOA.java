@@ -80,9 +80,6 @@ public class AppointmentDOA {
         List<Appointment> appointments = new ArrayList<>();
         // The executed query
         String sql = "select * from APPOINTMENT";
-        // appointment to present each retrieved appointment
-        Appointment appointment = new Appointment();
-
         // Connect to database
         try (Connection connection = DriverManager.getConnection(url);
              Statement statement = connection.createStatement()) {
@@ -90,6 +87,7 @@ public class AppointmentDOA {
             // Get all rows
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) { // for each row (Appointment)
+                Appointment appointment = new Appointment();
                 appointment.setAppID(resultSet.getInt("ID"));
                 appointment.setCaseID(resultSet.getInt("CASEID"));
                 appointment.setTitle(resultSet.getString("TITLE"));

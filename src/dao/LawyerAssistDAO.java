@@ -80,8 +80,6 @@ public class LawyerAssistDAO {
         List<LawyerAssistant> lawyerAssistants = new ArrayList<>();
         // The executed query
         String sql = "select * from LAWYERASSIST";
-        // LawyerAssist to present each retrieved LawyerAssist
-        LawyerAssistant lawAssist = new LawyerAssistant();
 
         // Connect to database
         try (Connection connection = DriverManager.getConnection(url);
@@ -90,6 +88,7 @@ public class LawyerAssistDAO {
             // Get all rows
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) { // for each row (LawyerAssistant)
+                LawyerAssistant lawAssist = new LawyerAssistant();
                 lawAssist.setId(resultSet.getInt("ID"));
                 lawAssist.setSuperVisor(resultSet.getBoolean("ISSUPERVISOR"));
                 lawyerAssistants.add(lawAssist); // Add LawyerAssist to the list

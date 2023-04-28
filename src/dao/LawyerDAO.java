@@ -85,8 +85,6 @@ public class LawyerDAO {
         List<Lawyer> lawyers = new ArrayList<>();
         // The executed query
         String sql = "select * from LAWYER";
-        // lawyer to present each retrieved lawyer
-        Lawyer lawyer = new Lawyer();
 
         LawType [] lawTypes = LawType.values();
         // Connect to database
@@ -97,6 +95,7 @@ public class LawyerDAO {
             // Get all rows
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) { // for each row (Lawyer)
+                Lawyer lawyer = new Lawyer();
                 lawyer.setId(resultSet.getInt("ID"));
                 lawyer.setExperienceYear(resultSet.getInt("EXPERIENCEYEAR"));
                 lawyer.setType(lawTypes[resultSet.getInt("LAWTYPE")]);

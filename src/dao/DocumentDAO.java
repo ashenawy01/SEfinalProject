@@ -87,8 +87,6 @@ public class DocumentDAO {
         List<Document> documents = new ArrayList<>();
         // The executed query
         String sql = "select * from DOCUMENT";
-        // document to present each retrieved document
-        Document document = new Document();
 
         LawType[] lawTypes = LawType.values();
         // Connect to database
@@ -98,6 +96,7 @@ public class DocumentDAO {
             // Get all rows
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) { // for each row (document)
+                Document document = new Document();
                 document.setDocID((resultSet.getInt("ID")));
                 document.setCaseID((resultSet.getInt("CASEID")));
                 document.setName((resultSet.getString("NAME")));

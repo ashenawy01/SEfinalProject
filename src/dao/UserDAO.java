@@ -188,21 +188,11 @@ public class UserDAO {
      * to retrieve all users with type (Admin & Lawyer & LawyerAssist)
      * according to the given (object) parameter
      * */
-    public <T> List<User> findAll(T object) {
+    public List<User> findAll() {
         // List to store all the retrieved objects (User)
         List<User> users = new ArrayList<>();
         // The executed query
         String sql = "select * from SYS_USER";
-
-        // Get the type of user to find
-        User user = null;
-        if (object instanceof Admin) {
-            user = new Admin();
-        } else if (object instanceof Lawyer) {
-            user = new Lawyer();
-        } else if (object instanceof LawyerAssistant) {
-            user = new LawyerAssistant();
-        }
 
         // Connect to database
         try (Connection connection = DriverManager.getConnection(url);
@@ -212,6 +202,7 @@ public class UserDAO {
             ResultSet resultSet = statement.executeQuery(sql);
             // Set user attributes for each user
             while (resultSet.next()) { // for each row
+                User user = new Admin();
                 user.setId(resultSet.getInt("ID"));
                 user.setFirstName(resultSet.getString("FIRSTNAME"));
                 user.setLastName(resultSet.getString("LASTNAME"));

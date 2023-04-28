@@ -14,6 +14,9 @@ public class Reminder {
         this.title = title;
         this.time = time;
     }
+    public Reminder () {
+
+    }
 
     public int getRemID() {
         return remID;

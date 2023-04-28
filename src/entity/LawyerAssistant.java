@@ -10,7 +10,7 @@ public class LawyerAssistant extends User {
     private List<Report> reports;
     private List<Appointment> appointments;
 
-    public LawyerAssistant(String firstName, String lastName, String email, String phoneNo, String password, Timestamp createdAt, boolean isActive, boolean isSuperVisor) {
+    public LawyerAssistant(String firstName, String lastName, String email,  String password,  String phoneNo,  boolean isActive, boolean isSuperVisor) {
         super(firstName, lastName, email, password, phoneNo, isActive);
         this.isSuperVisor = isSuperVisor;
         appointments = new ArrayList<>();

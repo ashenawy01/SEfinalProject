@@ -85,8 +85,6 @@ public class ClientDAO {
         List<Client> clients = new ArrayList<>();
         // The executed query
         String sql = "select * from CLIENT";
-        // client to present each retrieved client
-        Client client = new Client();
 
         LawType[] lawTypes = LawType.values();
         // Connect to database
@@ -97,6 +95,7 @@ public class ClientDAO {
             // Get all rows
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) { // for each row (client)
+                Client client = new Client();
                 client.setClientID(resultSet.getInt("ID"));
                 client.setFirstName(resultSet.getString("FIRSTNAME"));
                 client.setLastName(resultSet.getString("LASTNAME"));

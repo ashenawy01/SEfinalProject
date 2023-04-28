@@ -77,9 +77,6 @@ public class AdminADO {
         List<Admin> admins = new ArrayList<>();
         // The executed query
         String sql = "select * from ADMIN";
-        // admin to present each retrieved admin
-        Admin admin = new Admin();
-
         // Connect to database
         try (Connection connection = DriverManager.getConnection(url);
              Statement statement = connection.createStatement()) {
@@ -87,6 +84,7 @@ public class AdminADO {
             // Get all rows
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) { // for each row (Admin)
+                Admin admin = new Admin();
                 admin.setId(resultSet.getInt("ID"));
                 admin.setGlobal(resultSet.getBoolean("ISGLOBAL"));
                 admins.add(admin); // Add admin to the list

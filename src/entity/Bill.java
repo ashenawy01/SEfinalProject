@@ -20,6 +20,8 @@ public class Bill {
         this.adminCost = adminCost;
     }
 
+    public Bill () {}
+
     public int getBillID() {
         return billID;
     }
