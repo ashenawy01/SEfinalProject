@@ -1,9 +1,5 @@
-import dao.AdminADO;
-import dao.LawyerAssistDAO;
-import dao.LawyerDAO;
-import dao.UserDAO;
+import dao.*;
 import entity.*;
-
 public class newMain {
 
 
@@ -11,6 +7,7 @@ public class newMain {
     final static UserDAO userDAO = new UserDAO();
     final static LawyerDAO lawyerDAO = new LawyerDAO();
     final static AdminADO adminDAO = new AdminADO();
+    final static CaseDAO caseDAO = new CaseDAO();
     final static LawyerAssistDAO lawyerAssistDAO = new LawyerAssistDAO();
     public static void main(String[] args) {
 
@@ -93,6 +90,27 @@ public class newMain {
 ////        System.out.println("LawyerAssistant deleted ? " + lawyerAssistDAO.deleteLawyerAssistById(1));
 //        System.out.println("Get all LawyerAssistants ....");
 //        System.out.println(lawyerAssistDAO.findAll());
+//
+
+
+
+//        // Testing ClientDAO
+//        // All functions are tested (all done)
+//        Case newCase = new Case("BUE case", "Case was issued by a group of BUE students due to the large amount of tasks that they get",
+//                null, null, CaseCategory.Civil_Case, CaseState.Active, 1);
+//
+//        System.out.println("Case saved ? " + caseDAO.save(newCase));
+//        System.out.println("Get find the saved Case ....");
+//        System.out.println(caseDAO.findById(401));
+//        System.out.println("Update the availability status....");
+//        newCase.setName("BUE students case");
+//        System.out.println("Case updated ? " + caseDAO.updateCaseById(401, newCase));
+//        System.out.println("Get all Cases ....");
+//        System.out.println(caseDAO.findAll());
+//        System.out.println("Delete the newCase ... ");
+////        System.out.println("Case deleted ? " + caseDAO.deleteCaseById(401));
+//        System.out.println("Get all Cases ....");
+//        System.out.println(caseDAO.findAll());
 //
 
     }

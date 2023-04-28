@@ -16,12 +16,12 @@ public class Case implements Comparable<Case>, Comparator<Case> {
     private CaseState caseState;
     private int clientID;
 
-    public Case(String name, String description, List<Document> documents, List<Lawyer> lawyers, Timestamp createdAt, CaseCategory caseCategory, CaseState caseState, int clientID) {
+    public Case(String name, String description, List<Document> documents, List<Lawyer> lawyers, CaseCategory caseCategory, CaseState caseState, int clientID) {
         this.name = name;
         this.description = description;
         this.documents = documents;
         this.lawyers = lawyers;
-        this.createdAt = createdAt;
+        this.createdAt = new Timestamp(System.currentTimeMillis());
         this.caseCategory = caseCategory;
         this.caseState = caseState;
         this.clientID = clientID;
@@ -121,5 +121,21 @@ public class Case implements Comparable<Case>, Comparator<Case> {
     @Override
     public int hashCode() {
         return Objects.hash(caseID);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Case{" +
+                "caseID=" + caseID +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", documents=" + documents +
+                ", lawyers=" + lawyers +
+                ", createdAt=" + createdAt +
+                ", caseCategory=" + caseCategory +
+                ", caseState=" + caseState +
+                ", clientID=" + clientID +
+                '}';
     }
 }

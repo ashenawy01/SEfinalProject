@@ -41,9 +41,6 @@ public class EnumsDAO {
         }
 
 
-
-
-
          sql = "INSERT INTO CASESTATE (CASETYPE)" +
                 "VALUES (?)";
 

@@ -69,7 +69,7 @@ public class CaseDAO {
              PreparedStatement pstmt = connection.prepareStatement(sql)) {
 
             // add the new variable from the input object
-            pstmt.setInt(1, newnewCase.getCaseID());
+            pstmt.setString(1, newnewCase.getName());
             pstmt.setString(2, newnewCase.getDescription());
             pstmt.setTimestamp(3, newnewCase.getCreatedAt());
             pstmt.setInt(4, newnewCase.getCaseCategory().ordinal() + 1);
@@ -122,7 +122,7 @@ public class CaseDAO {
     // Retrieve case by ID
     public Case findById(int id) {
         // The executed query
-        String sql = "select * from LAWYER where ID = " + id;
+        String sql = "select * from LEGAL_CASE where ID = " + id;
         // case to present each retrieved case
         Case newCase = new Case();
 
