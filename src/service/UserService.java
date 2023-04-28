@@ -1,10 +1,9 @@
 package service;
 
 import dao.*;
-import entity.Admin;
-import entity.Lawyer;
-import entity.LawyerAssistant;
-import entity.User;
+import entity.*;
+
+import java.util.List;
 
 public class UserService {
     private static final UserDAO userDAO = new UserDAO();
@@ -105,6 +104,38 @@ public class UserService {
         }
 
         return savedUser && savedType; // saved in User Table & the user type table
+    }
+
+    User findUserByID (Object object, int id) {
+        // Get the type of user to find
+        User user = null;
+        if (object instanceof Admin admin) {
+            user = userDAO.findUserById(admin, id); // get Admin data in User Table
+            Admin currentAdmin = adminDAO.findAdminById(id);  // get Admin data in User Table
+            // add the joined table data (User & Admin)
+            Admin finalAdmin = (Admin) user;
+            finalAdmin.setGlobal(currentAdmin.isGlobal());
+            return finalAdmin; // Final result
+        } else if (object instanceof Lawyer lawyer) {
+            user = userDAO.findUserById(lawyer, id); // get Lawyer data in User Table
+            Lawyer currentLawyer = lawyerDAO.findById(id);  // get Lawyer data in Lawyer Table
+            // add the joined table data (User & Lawyer)
+            Lawyer finalLawyer = (Lawyer) user;
+            finalLawyer.setAvialable(currentLawyer.isAvialable());
+            finalLawyer.setType(currentLawyer.getType());
+            finalLawyer.setExperienceYear(currentLawyer.getExperienceYear());
+            finalLawyer.setSenior(currentLawyer.isSenior());
+            return finalLawyer; // Final result
+        } else if (object instanceof LawyerAssistant lawyerAssistant) {
+            user = userDAO.findUserById(lawyerAssistant, id); // get LawyerAssistant data in User Table
+            LawyerAssistant currentLawAssist = lawyerAssistDAO.findById(id);  // get LawyerAssistant data in LawyerAssistant Table
+            // add the joined table data (User & LawyerAssistant)
+            LawyerAssistant finalLawyerAssistant = (LawyerAssistant) user;
+            finalLawyerAssistant.setSuperVisor(currentLawAssist.isSuperVisor());
+            return finalLawyerAssistant; // Final result
+        } else {
+            return null;
+        }
     }
 
 }

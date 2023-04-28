@@ -104,14 +104,15 @@ public class UserDAO {
         }
 
         // the executed query
-        String sql = "SELECT * FROM SYS_USER WHERE EMAIL = " + email;
+        String sql = "SELECT * FROM SYS_USER WHERE EMAIL = ?";
 
         // connect to database
         try (Connection connection = DriverManager.getConnection(url);
-             Statement statement = connection.createStatement()) {
+             PreparedStatement statement = connection.prepareStatement(sql)) {
 
+            statement.setString(1, email);
             // get the result
-            ResultSet resultSet = statement.executeQuery(sql);
+            ResultSet resultSet = statement.executeQuery();
 
             // set user attributes
             if (resultSet.next()) {

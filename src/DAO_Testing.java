@@ -1,4 +1,5 @@
 import dao.*;
+import entity.Admin;
 
 public class DAO_Testing {
 
@@ -29,6 +30,9 @@ public class DAO_Testing {
 ////        admin = (Admin) userDAO.findUserById(admin, 101);
 ////        System.out.println(admin.getFirstName() + " " + admin.getLastName());
 ////        System.out.println(userDAO.deleteUserById(401));
+//
+//        Admin admin = new Admin();
+//        System.out.println(userDAO.findUserByEmail(admin, "aa@aa.com"));
 //
 //
 //        System.out.println(userDAO.findAll(admin));

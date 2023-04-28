@@ -2,6 +2,7 @@ package entity;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class LawyerAssistant extends User {
@@ -12,6 +13,7 @@ public class LawyerAssistant extends User {
     public LawyerAssistant(String firstName, String lastName, String email, String phoneNo, String password, Timestamp createdAt, boolean isActive, boolean isSuperVisor) {
         super(firstName, lastName, email, password, phoneNo, isActive);
         this.isSuperVisor = isSuperVisor;
+        appointments = new ArrayList<>();
     }
 
     public LawyerAssistant(){}
@@ -30,6 +32,22 @@ public class LawyerAssistant extends User {
     public void setReports(List<Report> reports) {
         this.reports = reports;
     }
+
+    public boolean addAppointment(Appointment appointment) {
+        return appointments.add(appointment);
+    }
+    public boolean deleteAppointment(Appointment appointment) {
+        return appointments.remove(appointment);
+    }
+    public boolean deleteAppointmentById(int id) {
+        for (Appointment appointment : appointments) {
+            if (appointment.getAppID() == id) {
+                return appointments.remove(appointment);
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "User{" +
