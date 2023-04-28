@@ -4,10 +4,6 @@ import service.AdminService;
 public class Service_Testing {
     public static void main(String[] args) {
 
-
-
-
-
 //
 //        AdminService adminService = new AdminService();
 //        Admin newAdmin =  new Admin("Abdelrhman", "Ali", "cc@aa.com", "test123", "01122", true, true);
@@ -27,8 +23,6 @@ public class Service_Testing {
 ////        System.out.println("Admin deleted ? " + adminService.deleteAdminById(601));
 //        System.out.println("Get all Admins ....");
 //        System.out.println(adminService.findAllAdmins());
-
-
 
 
     }
