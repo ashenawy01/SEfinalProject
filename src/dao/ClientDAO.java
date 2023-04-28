@@ -1,291 +1,142 @@
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by FernFlower decompiler)
-//
-
 package dao;
 
 import entity.Client;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import entity.LawType;
+import entity.Client;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClientDAO {
+
+
     private final String url = "jdbc:derby:Database/LAWFIRMDB;";
 
-    public ClientDAO() {
-    }
-
+    // Save lawyer attributes in table lawyer
     public boolean save(Client client) {
-        try {
-            Connection conn = DriverManager.getConnection("jdbc:derby:Database/LAWFIRMDB;");
 
-            boolean var6;
-            try {
-                Statement stmt = conn.createStatement();
+        // Insert data sql statement
+        String sql = "INSERT INTO CLIENT (firstName, lastName, phoneNo) VALUES(?,?,?)";
 
-                try {
-                    String sql = "INSERT INTO CLIENT (firstName, lastName, phoneNo) VALUES(?,?,?)";
-                    PreparedStatement pstmt = conn.prepareStatement(sql);
-                    pstmt.setString(1, client.getFirstName());
-                    pstmt.setString(2, client.getLastName());
-                    pstmt.setString(3, client.getPhoneNo());
-                    var6 = pstmt.executeUpdate() > 0;
-                } catch (Throwable var9) {
-                    if (stmt != null) {
-                        try {
-                            stmt.close();
-                        } catch (Throwable var8) {
-                            var9.addSuppressed(var8);
-                        }
-                    }
 
-                    throw var9;
-                }
+        // Connect to Database
+        try (Connection conn = DriverManager.getConnection(url);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-                if (stmt != null) {
-                    stmt.close();
-                }
-            } catch (Throwable var10) {
-                if (conn != null) {
-                    try {
-                        conn.close();
-                    } catch (Throwable var7) {
-                        var10.addSuppressed(var7);
-                    }
-                }
+            // Add the variable from the input object to the table
+            pstmt.setString(1, client.getFirstName());
+            pstmt.setString(2, client.getLastName());
+            pstmt.setString(3, client.getPhoneNo());
 
-                throw var10;
-            }
-
-            if (conn != null) {
-                conn.close();
-            }
-
-            return var6;
-        } catch (SQLException var11) {
-            var11.printStackTrace();
-            return false;
+            // the number of inserted rows (i) if true & (0) if false
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return false; //default return (if exception thrown)
     }
 
-    public <T> Client findClientById(T object, int id) {
-        Client client = null;
 
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:derby:Database/LAWFIRMDB;");
+    // Delete client by his ID
+    public boolean deleteClientById(int id) {
+        // The executed query
+        String sql = "DELETE FROM CLIENT WHERE ID = " + id;
 
-            try {
-                Statement statement = connection.createStatement();
-
-                try {
-                    String sql = "Select * FROM CLIENT WHERE ID = " + id;
-                    ResultSet resultSet = statement.executeQuery(sql);
-                    if (resultSet.next()) {
-                        ((Client)client).setClientID(resultSet.getInt("ID"));
-                        ((Client)client).setFirstName(resultSet.getString("FIRSTNAME"));
-                        ((Client)client).setLastName(resultSet.getString("LASTNAME"));
-                        ((Client)client).setPhoneNo(resultSet.getString("PHONENO"));
-                    }
-                } catch (Throwable var10) {
-                    if (statement != null) {
-                        try {
-                            statement.close();
-                        } catch (Throwable var9) {
-                            var10.addSuppressed(var9);
-                        }
-                    }
-
-                    throw var10;
-                }
-
-                if (statement != null) {
-                    statement.close();
-                }
-            } catch (Throwable var11) {
-                if (connection != null) {
-                    try {
-                        connection.close();
-                    } catch (Throwable var8) {
-                        var11.addSuppressed(var8);
-                    }
-                }
-
-                throw var11;
-            }
-
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException var12) {
-            var12.printStackTrace();
+        // Connect to database
+        try (Connection connection = DriverManager.getConnection(url);
+             Statement statement = connection.createStatement()) {
+            // the affected number of raws (if > 0 the row is deleted)
+            return statement.executeUpdate(sql) > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        return (Client)client;
+        return false;  //default return (if exception thrown)
     }
 
-    public boolean deleteUserById(int id) {
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:derby:Database/LAWFIRMDB;");
 
-            boolean var5;
-            try {
-                Statement statement = connection.createStatement();
+    // Update client by ID Parm(client id , the new object of lawyer)
+    public boolean updateClientById(int id, Client newClient) {
 
-                try {
-                    String sql = "DELETE FROM CLIENT WHERE ID =" + id;
-                    var5 = statement.executeUpdate(sql) > 0;
-                } catch (Throwable var9) {
-                    if (statement != null) {
-                        try {
-                            statement.close();
-                        } catch (Throwable var8) {
-                            var9.addSuppressed(var8);
-                        }
-                    }
+        // The executed query (Note id cannot be updated)
+        String sql = "UPDATE CLIENT set FIRSTNAME = ?, LASTNAME = ?, PHONENO = ? WHERE ID = " + id;
 
-                    throw var9;
-                }
+        // Connect to Database
+        try (Connection connection = DriverManager.getConnection(url);
+             PreparedStatement pstmt = connection.prepareStatement(sql)) {
 
-                if (statement != null) {
-                    statement.close();
-                }
-            } catch (Throwable var10) {
-                if (connection != null) {
-                    try {
-                        connection.close();
-                    } catch (Throwable var7) {
-                        var10.addSuppressed(var7);
-                    }
-                }
+            // add the new variable from the input object
+            pstmt.setString(1, newClient.getFirstName());
+            pstmt.setString(2, newClient.getLastName());
+            pstmt.setString(3, newClient.getPhoneNo());
 
-                throw var10;
-            }
-
-            if (connection != null) {
-                connection.close();
-            }
-
-            return var5;
-        } catch (SQLException var11) {
-            var11.printStackTrace();
-            return false;
+            // the affected number of raws (if > 0 the row is updated)
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return false;  //default return (if exception thrown)
     }
 
-    public boolean updateUserById(int id, Client newClient) {
-        String sql = "UPDATE CLIENT FIRSTNAME = ?, LASTNAME = ?, PHONENO = ?WHERE ID = ?";
 
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:derby:Database/LAWFIRMDB;");
+    // Retrieve all lawyers
+    public List<Client> findAll() {
+        // List to store all the retrieved objects (clients)
+        List<Client> clients = new ArrayList<>();
+        // The executed query
+        String sql = "select * from LAWYER";
+        // lawyer to present each retrieved lawyer
+        Client client = new Client();
 
-            boolean var6;
-            try {
-                PreparedStatement pstmt = connection.prepareStatement(sql);
+        LawType[] lawTypes = LawType.values();
+        // Connect to database
+        try (Connection connection = DriverManager.getConnection(url);
+             Statement statement = connection.createStatement()) {
 
-                try {
-                    pstmt.setString(1, newClient.getFirstName());
-                    pstmt.setString(2, newClient.getLastName());
-                    pstmt.setString(3, newClient.getPhoneNo());
-                    pstmt.setInt(4, id);
-                    var6 = pstmt.executeUpdate() > 0;
-                } catch (Throwable var11) {
-                    if (pstmt != null) {
-                        try {
-                            pstmt.close();
-                        } catch (Throwable var10) {
-                            var11.addSuppressed(var10);
-                        }
-                    }
 
-                    throw var11;
-                }
-
-                if (pstmt != null) {
-                    pstmt.close();
-                }
-            } catch (Throwable var12) {
-                if (connection != null) {
-                    try {
-                        connection.close();
-                    } catch (Throwable var9) {
-                        var12.addSuppressed(var9);
-                    }
-                }
-
-                throw var12;
+            // Get all rows
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) { // for each row (client)
+                client.setClientID(resultSet.getInt("ID"));
+                client.setFirstName(resultSet.getString("FIRSTNAME"));
+                client.setLastName(resultSet.getString("LASTNAME"));
+                client.setPhoneNo(resultSet.getString("PHONENO"));
+                clients.add(client); // Add lawyer to the list
             }
+            return clients; // return the retrieved list
 
-            if (connection != null) {
-                connection.close();
-            }
-
-            return var6;
-        } catch (SQLException var13) {
-            var13.printStackTrace();
-            return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return null;  //default return (if exception thrown)
     }
 
-    public <T> List<Client> findAll(T object) {
-        List<Client> clients = new ArrayList();
-        String sql = "select * from CLIENT";
-        Client client = null;
 
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:derby:Database/LAWFIRMDB;");
+    // Retrieve lawyer by ID
+    public Client findById(int id) {
+        // The executed query
+        String sql = "select * from LAWYER where ID = " + id;
+        // lawyer to present each retrieved lawyer
+        Client client = new Client();
+        LawType [] lawTypes = LawType.values();
 
-            try {
-                Statement statement = connection.createStatement();
+        // Connect to database
+        try (Connection connection = DriverManager.getConnection(url);
+             Statement statement = connection.createStatement()) {
 
-                try {
-                    ResultSet resultSet = statement.executeQuery(sql);
-
-                    while(resultSet.next()) {
-                        ((Client)client).setClientID(resultSet.getInt("ID"));
-                        ((Client)client).setFirstName("FIRSTNAME");
-                        ((Client)client).setLastName("LASTNAME");
-                        ((Client)client).setPhoneNo("PHONENO");
-                    }
-                } catch (Throwable var11) {
-                    if (statement != null) {
-                        try {
-                            statement.close();
-                        } catch (Throwable var10) {
-                            var11.addSuppressed(var10);
-                        }
-                    }
-
-                    throw var11;
-                }
-
-                if (statement != null) {
-                    statement.close();
-                }
-            } catch (Throwable var12) {
-                if (connection != null) {
-                    try {
-                        connection.close();
-                    } catch (Throwable var9) {
-                        var12.addSuppressed(var9);
-                    }
-                }
-
-                throw var12;
+            // Get all rows
+            ResultSet resultSet = statement.executeQuery(sql);
+            if (resultSet.next()) { // for each row (client)
+                client.setClientID(resultSet.getInt("ID"));
+                client.setFirstName(resultSet.getString("FIRSTNAME"));
+                client.setLastName(resultSet.getString("LASTNAME"));
+                client.setPhoneNo(resultSet.getString("PHONENO"));
             }
-
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException var13) {
-            var13.printStackTrace();
+            return client; // return the retrieved lawyer
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        return clients;
+        return null;  //default return (if exception thrown)
     }
+
 }

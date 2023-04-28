@@ -1,9 +1,9 @@
 package entity;
-import dao.ClientDAO;
+import dao.ClientDAO_OLD;
 public class NewMo3Main {
     public static void main(String[] args) {
         Client client = new Client("Mo", "Mohamed", "0115");
-        ClientDAO clientDAO = new ClientDAO();
-        clientDAO.save(client);
+        ClientDAO_OLD clientDAOOLD = new ClientDAO_OLD();
+        clientDAOOLD.save(client);
     }
 }

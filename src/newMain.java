@@ -94,7 +94,7 @@ public class newMain {
 
 
 
-//        // Testing ClientDAO
+//        // Testing CaseDAO
 //        // All functions are tested (all done)
 //        Case newCase = new Case("BUE case", "Case was issued by a group of BUE students due to the large amount of tasks that they get",
 //                null, null, CaseCategory.Civil_Case, CaseState.Active, 1);

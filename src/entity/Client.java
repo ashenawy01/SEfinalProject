@@ -14,6 +14,7 @@ public class Client implements Comparable<Client>, Comparator<Client> {
         this.lastName = lastName;
         this.phoneNo = phoneNo;
     }
+    public Client(){}
 
     public int getClientID() {
         return ClientID;
