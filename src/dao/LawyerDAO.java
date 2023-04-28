@@ -14,18 +14,19 @@ public class LawyerDAO {
     public boolean save(Lawyer lawyer) {
 
         // Insert data sql statement
-        String sql = "INSERT INTO LAWYER (EXPERIENCEYEAR, LAWTYPE, ISSENIOR, ISAVAILABLE)" +
-                " VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO LAWYER (ID, EXPERIENCEYEAR, LAWTYPE, ISSENIOR, ISAVAILABLE)" +
+                " VALUES (?, ?, ?, ?, ?)";
 
         // Connect to Database
         try (Connection conn = DriverManager.getConnection(url);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             // Add the variable from the input object to the table
-            pstmt.setInt(1, lawyer.getExperienceYear());
-            pstmt.setInt(2, lawyer.getType().ordinal() + 1);
-            pstmt.setBoolean(3, lawyer.isSenior());
-            pstmt.setBoolean(4, lawyer.isAvialable());
+            pstmt.setInt(1, lawyer.getId());
+            pstmt.setInt(2, lawyer.getExperienceYear());
+            pstmt.setInt(3, lawyer.getType().ordinal() + 1);
+            pstmt.setBoolean(4, lawyer.isSenior());
+            pstmt.setBoolean(5, lawyer.isAvialable());
 
             // the number of inserted rows (i) if true & (0) if false
             return pstmt.executeUpdate() > 0;

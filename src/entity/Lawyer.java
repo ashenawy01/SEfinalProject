@@ -47,4 +47,14 @@ public class Lawyer extends User{
     public void setAvialable(boolean avialable) {
         isAvialable = avialable;
     }
+
+    @Override
+    public String toString() {
+        return "Lawyer{" +
+                "experienceYear=" + experienceYear +
+                ", type=" + type +
+                ", isSenior=" + isSenior +
+                ", isAvialable=" + isAvialable +
+                '}';
+    }
 }
