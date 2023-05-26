@@ -8,5 +8,11 @@
       <jdbc-url>jdbc:derby:Database/LAWFIRMDB</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="Apache Derby (Embedded)" uuid="b38077fc-5b9f-460e-a79e-824e02bece90">
+      <driver-ref>derby.embedded</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.apache.derby.jdbc.EmbeddedDriver</jdbc-driver>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
